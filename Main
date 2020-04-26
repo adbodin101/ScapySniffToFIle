@@ -21,7 +21,7 @@ pkt=sniff(prn=packetSpoof)
 
 
 file = open("torDataFile.txt","w")
-ListLength - len(PacketList)
+ListLength = len(PacketList)
 for i in range(ListLength):
 	file.write(PacketList[i])
 
