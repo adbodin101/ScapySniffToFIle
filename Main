@@ -1,19 +1,22 @@
 #!/usr/bin/python
+
 from scapy.all import *
 
-file = open("torDataFile.txt","w+")
+PacketList = []
 
 def packetSpoof(pkt):
 	
-	IPInfo=IP()
-	TCPinfo=TCP()
-	Data=pkt[TCP].data
-	packet = [IPinfo, TCPinfo, Data]
-	file.writelines(packet)	
+	source = IP()
+	data = TCP()
+	data = pkt[TCP].payload
+	 
+	packet = [source, data, data]
+	PacketList.append(packet) 
+	print(packet)	
 
-pkt=sniff(prn=packetSpoof)
+pkt=sniff(filter="tcp", prn=packetSpoof)
 
-file.close()w")
+ile = open("torDataFile.txt","w")
 ListLength = len(PacketList)
 for i in range(ListLength):
 	file.write(PacketList[i])
